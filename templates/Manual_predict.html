@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electric Motor Temperature Prediction</title>
+
+    <!-- IMPORTANT: Flask CSS linking -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+
+<div class="navbar">
+    Electric Motor Temperature
+</div>
+
+<div class="container">
+    <h1>Electric Motor Temperature Prediction</h1>
+
+    <p class="subtitle">
+        Fill in the details below to predict Permanent Magnet surface temperature
+        representing the rotor temperature.
+    </p>
+
+    <form method="POST">
+        <input type="number" step="any" name="ambient" placeholder="Ambient temperature" required>
+        <input type="number" step="any" name="coolant" placeholder="Coolant temperature" required>
+        <input type="number" step="any" name="vd" placeholder="Voltage d-component" required>
+        <input type="number" step="any" name="vq" placeholder="Voltage q-component" required>
+        <input type="number" step="any" name="speed" placeholder="Motor speed" required>
+        <input type="number" step="any" name="id" placeholder="Current d-component" required>
+        <input type="number" step="any" name="iq" placeholder="Current q-component" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if prediction %}
+        <h2 class="prediction">{{ prediction }}</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>
